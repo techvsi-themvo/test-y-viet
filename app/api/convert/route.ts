@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   const buffer = Buffer.from(await file.arrayBuffer());
   const pixelData = new Uint8Array(buffer);
 
-  const { DicomMetaDictionary, DicomDict } = dcmjs.data;
+  const { DicomMetaDictionary, DicomDict } = (dcmjs as any).data;
   const SOPClassUID = '1.2.840.10008.5.1.4.1.1.7';
 
   const dicomData = {
